@@ -1,5 +1,5 @@
 #!/bin/bash
-Remote_server=localhost
+Remote_server=$4
 Remote_port=$2
 Passd=$1
 Local_port=$3

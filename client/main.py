@@ -3,20 +3,26 @@ import subprocess
 import requests
 import json
 import signal
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+
+server = os.getenv("SERVER")
+server_ip = os.getenv("SERVER_IP")
 def signal_handler(sig, frame):
     print("Exiting...")
     subprocess.run(["bash", "./kill.sh"])
     sys.exit(0)
 
 def port_no():
-    r = requests.get('http://localhost:5000/')
+    r = requests.get(f'{server}/')
     response = r.text
     response_data = json.loads(response)
     port = response_data["port"]
     return port
 def passwd():
-    r = requests.get('http://localhost:5000/temp_passd')
+    r = requests.get(f'{server}/temp_passd')
     response = r.text
     response_data = json.loads(response)
     passd = response_data["passd"]
@@ -27,13 +33,13 @@ def tunnel():
     port = port_no()
     local_port = sys.argv[1]
     script = "./tunnel.sh"
-    subprocess.run(["bash", script, passd, port, local_port])
-    r = requests.post(f'http://localhost:5000/tunnel/{port}')
+    subprocess.run(["bash", script, passd, port, local_port, server_ip])
+    r = requests.post(f'{server}/tunnel/{port}')
     response = r.text
     return response
 
 def main():
-    print("Weblink: http://localhost/"+ tunnel())
+    print(f"Weblink: {server}/"+ tunnel())
     print("Press Ctrl+C to exit")
     while True:
         pass
