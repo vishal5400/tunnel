@@ -1,5 +1,6 @@
 #!/bin/bash
 # Check apt pakage managers
+sudo useradd -m -s /bin/bash tunnel && echo "tunnel:SecurePassword" | sudo chpasswd
 install_with_apt() {
   sudo apt update
   sudo apt install -y nginx python3 python3-pip
@@ -29,21 +30,23 @@ install_software() {
 install_software "package_name"
 
 cd server && pip3 install -r requirements.txt
-sudo cp -r server ~/.tunnel
+sudo mkdir -p /root/.tunnel
+pwd
+sudo cp -r ../server /root/.tunnel
 
 # Assign the server name from the argument
 server_name="$1"
 nginx_conf_dir="/etc/nginx/sites-available"
 nginx_conf_file="${server_name}"
-sudo rm -rf /etc/nginx/sites-enabled
+sudo rm -rf /etc/nginx/sites-enabled/default
 sudo mkdir -p  /etc/nginx/location_block
+sudo touch /etc/nginx/location_block/tunnel
 # Create an Nginx site configuration file
 cat <<EOF > "${nginx_conf_dir}/${nginx_conf_file}"
 server {
     listen 80;
     server_name ${server_name};
-    include /etc/nginx/location_block/tunnel; 
-    }
+    include /etc/nginx/location_block/tunnel;
 }
 EOF
 
@@ -53,6 +56,7 @@ sudo ln -s "${nginx_conf_dir}/${nginx_conf_file}" "/etc/nginx/sites-enabled/"
 # Reload Nginx to apply the new configuration
 sudo systemctl restart nginx.service
 
+# Create service file for tunnel App
 cat <<EOF > "/etc/systemd/system/tunnel-app.service"
 [Unit]
 Description=Tunnel app
@@ -60,7 +64,7 @@ After=network.target
 
 [Service]
 User=root
-WorkingDirectory=~/.tunnrl
+WorkingDirectory=/root/.tunnel/server
 ExecStart=python3 server.py
 
 [Install]
