@@ -65,8 +65,8 @@ Navigate to the `.client` directory and open the `.env` file using a text editor
 ```bash
 cd ~/.client
 vim .env
-
-Add these variables in the .env file:
+```
+Add these variables in the .env file.:
 
 SERVER="http://your-domain.com"
 SERVER_IP="your-server-ip"
