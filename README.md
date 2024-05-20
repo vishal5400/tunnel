@@ -39,9 +39,9 @@ To set up your own server, follow these steps:
 
 To check the status of the application, use the following command:
 
-    ```
+    `
     systemctl status tunnel-app.service
-    ```
+    `
 
 # How to Install Client
 
