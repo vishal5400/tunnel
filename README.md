@@ -63,8 +63,8 @@ Clone this repository and run the `client-setup.sh` script. It will automaticall
     Navigate to the `.client` directory and open the `.env` file using a text editor. Add the following variables and replace the placeholders with your domain and server IP:
 
 ```bash
-cd ~/.client
-vim .env
+    cd ~/.client
+    vim .env
 ```
 Add these variables in the .env file.:
 
