@@ -58,7 +58,7 @@ Clone this repository and run the `client-setup.sh` script. It will automaticall
    ```bash
     ./client-setup.sh
     ```
-### 3. Add your domain and server IP in .env file:
+3. Add your domain and server IP in .env file:
 
 Navigate to the `.client` directory and open the `.env` file using a text editor. Add the following variables and replace the placeholders with your domain and server IP:
 
