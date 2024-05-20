@@ -41,7 +41,7 @@ To check the status of the application, use the following command:
 
 ```bash
 systemctl status tunnel-app.service
-
+    ```
 
 # How to Install Client
 
@@ -50,8 +50,9 @@ Clone this repository and run the `client-setup.sh` script. It will automaticall
 ## Installation Steps
 
 1. Clone the repository:
-   ```sh
+   ```bash
    git clone https://github.com/vishalkaushikdixit/tunnel.git
+    ```
    cd your-repo
 2. Run the setup script:
    ```bash
