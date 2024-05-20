@@ -68,9 +68,9 @@ vim .env
 ```
 Add these variables in the .env file.:
 
-`SERVER="http://your-domain.com"
+SERVER="http://your-domain.com"
 
-SERVER_IP="your-server-ip"`
+SERVER_IP="your-server-ip"
 
 4. After installing the client, you can use it with the following command:
    ```bash
