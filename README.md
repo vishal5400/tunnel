@@ -18,7 +18,7 @@ To set up your own server, follow these steps:
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/vishalkaushikdixit/tunnel.git
+    git clone https://github.com/vishal5400/tunnel.git
     ```
 
 2. Navigate to the repository directory:
@@ -51,7 +51,7 @@ Clone this repository and run the `client-setup.sh` script. It will automaticall
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/vishalkaushikdixit/tunnel.git
+   git clone https://github.com/vishal5400/tunnel.git
     ```
    cd your-repo
 2. Run the setup script:
